@@ -1,0 +1,30 @@
+{
+  "name": "flight-price-checker-api",
+  "version": "1.0.0",
+  "description": "A simple flight price checker API with express.js on top of kiwi.com API",
+  "main": "build/server.js",
+  "scripts": {
+    "start:dev": "nodemon --exec babel-node -- src/main.js",
+    "test": "NODE_ENV=test nyc mocha test/*.spec.js",
+    "prestart": "rm -rf build/ && babel src --out-dir build",
+    "start": "node build/server.js"
+  },
+  "repository": "git@github.com:bboulahdid/flight-price-checker-api.git",
+  "author": "Boubker Boulahdid <boulahdid.boubker@gmail.com>",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/node": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/register": "^7.0.0-beta.49",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "nyc": "^12.0.2",
+    "supertest": "^3.1.0"
+  }
+}
