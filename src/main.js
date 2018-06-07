@@ -1,15 +1,8 @@
 import express from 'express';
 
-import projectInfo from '../package';
+import Server from './server';
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-app.get('/status', (req, res) => {
-  res.json({
-    name: projectInfo.name,
-    description: projectInfo.description,
-    version: projectInfo.version
-  });
-});
-
-export default app;
+export default new Server(app, port);
