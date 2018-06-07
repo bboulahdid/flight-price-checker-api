@@ -1,0 +1,113 @@
+{
+  "extends": "google",
+  "plugins": [
+    "chai-friendly"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "func-style": [
+      "error",
+      "expression"
+    ],
+    "prefer-arrow-callback": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "brace-style": [
+      "error",
+      "1tbs"
+    ],
+    "quote-props": [
+      "error",
+      "as-needed",
+      {
+        "keywords": true,
+        "numbers": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "no-trailing-spaces": "error",
+    "max-len": [
+      "error",
+      120
+    ],
+    "no-bitwise": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "curly": [
+      "error",
+      "all"
+    ],
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "no-unused-expressions": "off",
+    "chai-friendly/no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "guard-for-in": "error",
+    "wrap-iife": [
+      "error",
+      "inside"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "no-use-before-define": "error",
+    "new-cap": "error",
+    "no-caller": "error",
+    "no-empty": "error",
+    "no-irregular-whitespace": "error",
+    "no-new": "error",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "strict": [
+      "error",
+      "global"
+    ],
+    "no-undef": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "after-used"
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": "warn",
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": [
+          "todo",
+          "fixme",
+          "xxx"
+        ],
+        "location": "start"
+      }
+    ],
+    "no-var": "error",
+    "prefer-const": "error"
+  }
+}

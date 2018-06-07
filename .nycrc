@@ -13,5 +13,7 @@
   ],
   "exclude": [
     "test/"
-  ]
+  ],
+  "reporter": ["text", "html"],
+  "report-dir": "./html-report"
 }
