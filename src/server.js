@@ -4,6 +4,9 @@ import statusRouter from './routes/status';
 // A private variable to hold our express app
 let _app;
 
+// Another private variable to hold the server instance when it's strated
+let _serverInsance;
+
 /**
  * Manage all the states of our express server
  */
@@ -22,16 +25,22 @@ export default class Server {
 
   /**
    * Start the server
+   *
+   * @param {Server~callback} cb - An optional callback
    */
-  start() {
-    _app.listen(this.port, () => logger.info(`Server listening on port ${this.port}...`));
+  start(cb) {
+    _serverInsance = _app.listen(this.port, () => {
+      logger.info(`Server listening on port ${this.port}...`);
+      // If a callback is provided, execute it
+      cb && cb();
+    });
   }
 
   /**
    * Stop the server
    */
   stop() {
-    _app.close();
+    _serverInsance.close();
   }
 
   /**
