@@ -1,5 +1,10 @@
+import express from 'express';
+
 import logger from './lib/logger';
+
+// Routes
 import statusRouter from './routes/status';
+import flightsRouter from './routes/flights';
 
 // A private variable to hold our express app
 let _app;
@@ -13,12 +18,10 @@ let _serverInsance;
 export default class Server {
   /**
    * Get the express instance, the port & load all middlewares
-   *
-   * @param {object} app - the express instance
    * @param {number} port - the port
    */
-  constructor(app, port) {
-    _app = app;
+  constructor(port) {
+    _app = express();
     this.port = port;
     this.loadMiddlewares();
   }
@@ -26,7 +29,7 @@ export default class Server {
   /**
    * Start the server
    *
-   * @param {Server~callback} cb - An optional callback
+   * @param {Server~callback} [cb] - An optional callback
    */
   start(cb) {
     _serverInsance = _app.listen(this.port, () => {
@@ -47,6 +50,31 @@ export default class Server {
    * Load all middlewares
    */
   loadMiddlewares() {
+    _app.use(express.json());
+
+    // A middleware to make 'from' & 'to' values uppercase
+    // in case the user provides a lowercase values
+    _app.use((req, res, next) => {
+      if ('from' in req.query && 'to' in req.query) {
+        req.query.from = req.query.from.toUpperCase();
+        req.query.to = req.query.to.toUpperCase();
+      }
+      next();
+    });
+
+    // Routes
     _app.use('/api', statusRouter);
+    _app.use('/api', flightsRouter);
+
+    // Error handler middleware
+    _app.use((err, req, res, next) => {
+      if (err) {
+        const errorCode = err.message.startsWith('Bad request') ? 400 : 500;
+        return res.status(errorCode).json({
+          error: { message: err.message }
+        });
+      }
+      next();
+    });
   }
 }
