@@ -9,7 +9,7 @@ import flightsRouter from './routes/flights';
 // A private variable to hold our express app
 let _app;
 
-// Another private variable to hold the server instance when it's strated
+// Another private variable to hold the server instance when it's started
 let _serverInsance;
 
 /**

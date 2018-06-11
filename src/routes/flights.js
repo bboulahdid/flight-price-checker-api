@@ -6,7 +6,7 @@ import countryCodes from '../services/iso-3166-country-codes';
 
 const router = new Router();
 
-// Since it's a simple app, I leave the validation here
+// Since it's a simple app, I'll leave the validation here
 // No need to add a library for that
 router.get('/flights', asyncMiddleware(async (req, res) => {
   const { from, to } = req.query;
