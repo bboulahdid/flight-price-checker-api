@@ -1,4 +1,5 @@
 import countryCodes from './iso-3166-country-codes';
+import logger from '../lib/logger';
 
 // FR, us and mA are valid values. XX7 and d5 are not
 const _countryCodePattern = /^[a-zA-Z]{2}$/;
@@ -42,6 +43,7 @@ const asyncMiddleware = (handler) => {
     try {
       await handler(req, res);
     } catch (error) {
+      logger.error(error.message);
       next(error);
     }
   };

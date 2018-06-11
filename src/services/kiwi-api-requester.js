@@ -1,5 +1,7 @@
 import request from 'request-promise-native';
 
+import logger from '../lib/logger';
+
 const kiwiFlightsAPI = 'https://api.skypicker.com/flights';
 
 /**
@@ -26,7 +28,7 @@ const _buildResponse = (kiwiResponse = {}) => {
 
     return { country, cities };
   }
-
+  logger.warn('Received an empty response from KIWI flights API');
   return {};
 };
 
@@ -39,6 +41,7 @@ const _buildResponse = (kiwiResponse = {}) => {
  * @return {Object} the built response
  */
 const checkFlightsPrices = async (flyFrom, to, curr = 'EUR') => {
+  logger.info(`Calling KIWI flights API (flyFrom: ${flyFrom}, to: ${to} curr: ${curr})`);
   const response = await request.get(kiwiFlightsAPI, {
     qs: { flyFrom, to, curr },
     json: true

@@ -4,6 +4,4 @@
 A simple flight price checker API with express.js on top of [kiwi](https://docs.kiwi.com/) API
 
 ## TODO :
-- [ ] Add logs
 - [ ] Handle `uncaughtException` and `unhandledRejection` errors
-- [ ] Improve tests

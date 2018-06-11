@@ -7,8 +7,8 @@
     "start:dev": "nodemon --exec babel-node -- src",
     "pretest": "eslint .",
     "test": "NODE_ENV=test nyc mocha --recursive test/",
-    "prestart": "rm -rf build/ && babel src --out-dir build",
-    "start": "node build"
+    "prestart": "rm -rf build/ && babel src --out-dir build --copy-files",
+    "start": "LOG=true node build"
   },
   "repository": "git@github.com:bboulahdid/flight-price-checker-api.git",
   "author": "Boubker Boulahdid <boulahdid.boubker@gmail.com>",
