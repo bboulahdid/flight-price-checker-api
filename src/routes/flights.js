@@ -37,10 +37,13 @@ router.get('/flights', asyncMiddleware(async (req, res) => {
     return await checkFlightsPrices(from, destination);
   }));
 
-  res.status(200).json({
+  // If 'flights' array contains only empty objects, return an empty response
+  const response = flights.filter((flight) => Object.keys(flight).length > 0).length > 0 ? {
     countryFrom: countryCodes.find((country) => country.code === from).name,
     countriesTo: flights
-  });
+  } : {};
+
+  res.status(200).json(response);
 }));
 
 export default router;

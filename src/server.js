@@ -67,14 +67,12 @@ export default class Server {
     _app.use('/api', flightsRouter);
 
     // Error handler middleware
+    /* eslint-disable-next-line no-unused-vars */
     _app.use((err, req, res, next) => {
-      if (err) {
-        const errorCode = err.message.startsWith('Bad request') ? 400 : 500;
-        return res.status(errorCode).json({
-          error: { message: err.message }
-        });
-      }
-      next();
+      const errorCode = err.message.startsWith('Bad request') ? 400 : 500;
+      return res.status(errorCode).json({
+        error: { message: err.message }
+      });
     });
   }
 }

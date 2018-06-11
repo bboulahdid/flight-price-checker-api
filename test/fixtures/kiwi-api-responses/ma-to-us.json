@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+			"aTimeUTC": 1542590700,
+			"price": 167,
+			"cityTo": "Boston",
+			"dTimeUTC": 1542486900,
+			"cityFrom": "Fes",
+			"countryTo": {
+				"code": "US",
+				"name": "United States"
+			}
+    },
+    {
+			"aTimeUTC": 1539209400,
+			"price": 208,
+			"cityTo": "Providence",
+			"dTimeUTC": 1539113100,
+			"cityFrom": "Agadir",
+			"countryTo": {
+				"code": "US",
+				"name": "United States"
+			}
+		}
+	]
+}

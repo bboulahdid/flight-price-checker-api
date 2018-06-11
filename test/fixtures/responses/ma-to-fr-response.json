@@ -1,0 +1,38 @@
+{
+  "countryFrom": "Morocco",
+  "countriesTo": [
+    {
+      "country": "France",
+      "cities": [
+        {
+          "cityFrom": "Nador",
+          "cityTo": "Marseille",
+          "departureTime": 1530006000,
+          "arrivalTime": 1530013500,
+          "price": 18
+        },
+        {
+          "cityFrom": "Marrakesh",
+          "cityTo": "Poitiers",
+          "departureTime": 1529416800,
+          "arrivalTime": 1529427900,
+          "price": 21
+        },
+        {
+          "cityFrom": "Fes",
+          "cityTo": "Marseille",
+          "departureTime": 1531142700,
+          "arrivalTime": 1531150800,
+          "price": 22
+        },
+        {
+          "cityFrom": "Nador",
+          "cityTo": "Paris",
+          "departureTime": 1531737300,
+          "arrivalTime": 1531747500,
+          "price": 22
+        }
+      ]
+    }
+  ]
+}

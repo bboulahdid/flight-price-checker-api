@@ -4,6 +4,7 @@ import countryCodes from './iso-3166-country-codes';
 const _countryCodePattern = /^[a-zA-Z]{2}$/;
 
 // A private variable to hold all country codes
+// (the .map(), here, is executed only once)
 const _countryCodes = countryCodes.map((country) => country.code);
 
 /**

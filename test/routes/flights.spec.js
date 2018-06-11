@@ -1,10 +1,18 @@
 import { expect } from 'chai';
+import nock from 'nock';
 
-// import logger from '../../src/lib/logger';
+import { getFlightsPrices, stubKiwiAPI } from '../test-helpers';
 
-import { getFlightsPrices } from '../test-helpers';
+import kiwiAPIRespMAtoFR from '../fixtures/kiwi-api-responses/ma-to-fr';
+import kiwiAPIRespMAtoUS from '../fixtures/kiwi-api-responses/ma-to-us';
+import expectedRespMAtoFR from '../fixtures/responses/ma-to-fr-response';
+import expectedRespMAtoFRandUS from '../fixtures/responses/ma-to-fr-and-us-response';
 
 describe('/flights', () => {
+  after(() => {
+    nock.cleanAll();
+  });
+
   describe('error cases', () => {
     it('should return a 400 error response if \'from\' qs is empty', async () => {
       try {
@@ -58,9 +66,46 @@ describe('/flights', () => {
         });
       }
     });
+
+    it('should return a 500 error response if KIWI API is unreachable', async () => {
+      const stub = stubKiwiAPI('MA', 'FR', 500);
+      try {
+        await getFlightsPrices('ma', 'fr');
+      } catch (err) {
+        stub.done();
+        expect(err.statusCode).to.equal(500);
+      }
+    });
   });
 
   describe('nominal cases', () => {
-    // ...
+    it('should return a 200 response if qs params are valid', async () => {
+      const stub = stubKiwiAPI('MA', 'FR', 200, kiwiAPIRespMAtoFR);
+
+      const response = await getFlightsPrices('ma', 'fr');
+
+      stub.done();
+      expect(response).to.deep.equal(expectedRespMAtoFR);
+    });
+
+    it('should call KIWI API for each valid destination', async () => {
+      const maTofrStub = stubKiwiAPI('MA', 'FR', 200, kiwiAPIRespMAtoFR);
+      const maToUsStub = stubKiwiAPI('MA', 'US', 200, kiwiAPIRespMAtoUS);
+
+      const response = await getFlightsPrices('ma', 'fr,,xxx,us,3f,,d');
+
+      maTofrStub.done();
+      maToUsStub.done();
+      expect(response).to.deep.equal(expectedRespMAtoFRandUS);
+    });
+
+    it('should return an empty response when when there is no data in KIWI API response', async () => {
+      const stub = stubKiwiAPI('MA', 'FR', 200);
+
+      const response = await getFlightsPrices('ma', 'fr');
+
+      stub.done();
+      expect(response).to.be.empty;
+    });
   });
 });

@@ -1,0 +1,48 @@
+{
+  "data": [
+		{
+			"aTimeUTC": 1530013500,
+			"price": 18,
+			"cityTo": "Marseille",
+			"dTimeUTC": 1530006000,
+			"cityFrom": "Nador",
+			"countryTo": {
+				"code": "FR",
+				"name": "France"
+			}
+		},
+		{
+			"aTimeUTC": 1529427900,
+			"price": 21,
+			"cityTo": "Poitiers",
+			"dTimeUTC": 1529416800,
+			"cityFrom": "Marrakesh",
+			"countryTo": {
+				"code": "FR",
+				"name": "France"
+			}
+		},
+		{
+			"aTimeUTC": 1531150800,
+			"price": 22,
+			"cityTo": "Marseille",
+			"dTimeUTC": 1531142700,
+			"cityFrom": "Fes",
+			"countryTo": {
+				"code": "FR",
+				"name": "France"
+			}
+		},
+		{
+			"aTimeUTC": 1531747500,
+			"price": 22,
+			"cityTo": "Paris",
+			"dTimeUTC": 1531737300,
+			"cityFrom": "Nador",
+			"countryTo": {
+				"code": "FR",
+				"name": "France"
+			}
+		}
+	]
+}
