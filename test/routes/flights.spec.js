@@ -34,7 +34,7 @@ describe('/flights', () => {
         expect(err.statusCode).to.equal(400);
         expect(err.error).to.deep.equal({
           error: {
-            message: 'Bad request: \'from\' value is not a valid ISO 3166 coutry code. e.g. \'FR\' for France.'
+            message: 'Bad request: \'from\' value is not a valid ISO 3166 country code. e.g. \'FR\' for France.'
           }
         });
       }
@@ -60,7 +60,7 @@ describe('/flights', () => {
         expect(err.statusCode).to.equal(400);
         expect(err.error).to.deep.equal({
           error: {
-            message: 'Bad request: the destinations provided are not valid ISO 3166 coutry codes. ' +
+            message: 'Bad request: the destinations provided are not valid ISO 3166 country codes. ' +
               'e.g. \'FR,US,MA\' for France, USA and Morocco.'
           }
         });

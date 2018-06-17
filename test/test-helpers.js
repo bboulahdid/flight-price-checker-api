@@ -17,8 +17,8 @@ const getStatus = async () => {
 /**
  * Intercept the call to the KIWI API and send the desired response
  *
- * @param {string} flyFrom - the departure coutry
- * @param {string} to - the arrival coutry
+ * @param {string} flyFrom - the departure country
+ * @param {string} to - the arrival country
  * @param {number} statusCode - the response status code
  * @param {Object} resp - the desired response
  * @return {Nock}

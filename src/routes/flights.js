@@ -22,13 +22,13 @@ router.get('/flights', asyncMiddleware(async (req, res) => {
 
   // Check if the required parameters are valid
   if (!isCountryCodeValid(from)) {
-    throw new Error('Bad request: \'from\' value is not a valid ISO 3166 coutry code. e.g. \'FR\' for France.');
+    throw new Error('Bad request: \'from\' value is not a valid ISO 3166 country code. e.g. \'FR\' for France.');
   }
 
   const destinations = extractDestinations(to);
 
   if (destinations.length === 0) {
-    throw new Error('Bad request: the destinations provided are not valid ISO 3166 coutry codes. ' +
+    throw new Error('Bad request: the destinations provided are not valid ISO 3166 country codes. ' +
       'e.g. \'FR,US,MA\' for France, USA and Morocco.');
   }
 
