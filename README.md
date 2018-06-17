@@ -25,5 +25,13 @@ To build everything & start the server :
 yarn start
 ```
 
+## API :
+
+This mini project provides 2 APIs :
+* `GET /api/status`: it returns some information about the project (name, version, description)
+* `GET /api/flights`: it returns all flights, if there is any, between two countries. It needs two required query string parameters :
+  * `from`: the ISO 3166 country code of the departure country. e.g. 'FR' for France.
+  * `to`: a comma separated string of ISO 3166 country codes of the arrival countries. e.g. 'FR,US' for France & USA.
+
 ## TODO :
 - [ ] Handle `uncaughtException` and `unhandledRejection` errors
