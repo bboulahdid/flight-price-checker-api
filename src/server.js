@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 
 import logger from './lib/logger';
 
@@ -50,6 +51,7 @@ export default class Server {
    * Load all middlewares
    */
   loadMiddlewares() {
+    _app.use(cors());
     _app.use(express.json());
 
     // A middleware to make 'from' & 'to' values uppercase
